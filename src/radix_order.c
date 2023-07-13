@@ -15,7 +15,7 @@
 //It then iterates through each bit position, distributing the numbers into two separate stacks based on that bit. 
 //Finally, it merges the sorted numbers back into the original stack.
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 static int	get_max_bits(t_list **stack)
 {

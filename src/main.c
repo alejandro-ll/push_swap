@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
-init_stack(t_list **stack_a, int argc, char **argv)
+static void	init_stack(t_list **stack, int argc, char **argv)
 {
     t_list  *new;
     char    **args;
@@ -53,8 +53,8 @@ int main(int argc, char **argv)
 
     if (argc < 2)
         return (-1);
-    stack_a = (t_list **) malloc (t_list *);
-    stack_b = (t_list **) malloc (t_list *);
+    stack_a = (t_list **) malloc (sizeof(t_list *));
+    stack_b = (t_list **) malloc (sizeof(t_list *));
     stack_a = NULL;
     stack_b = NULL;
     init_stack(stack_a, argc, argv);

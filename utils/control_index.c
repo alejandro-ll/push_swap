@@ -13,9 +13,9 @@
 //We must assign the value of the index ordered by data value traversing the list
 //Example: we have 13 42 7, the index values should be 2 3 1
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
-static *t_list  get_next_min(t_list **stack)
+static t_list  *get_next_min(t_list **stack)
 {
     t_list  *min;
     t_list  *head;

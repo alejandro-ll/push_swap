@@ -10,29 +10,55 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = push_swap
+# Nombre del archivo final
+NAME = push_swap.a
 
-SRCS =  $(wildcard src/*.c utils/*.c)
+# Directorios de código fuente y objetos
+SRCDIR = src
+UTILSDIR = utils
+OBJDIR = objs
+LIBFTDIR = libft
 
-OBJS = ${SRCS:.c=.o}
+# Archivos fuente y objetos
+SRCS = $(wildcard $(SRCDIR)/*.c) $(wildcard $(UTILSDIR)/*.c) $(wildcard $(LIBFTDIR)/*.c)
+OBJS = $(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(filter $(SRCDIR)/%.c, $(SRCS))) \
+       $(patsubst $(UTILSDIR)/%.c, $(OBJDIR)/%.o, $(filter $(UTILSDIR)/%.c, $(SRCS)))
 
+
+# Compilador y flags
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -Iincludes
+CFLAGS = -Wall -Wextra -Werror
 
-RM = rm -rf
+# Regla de construcción del archivo final
+$(NAME): $(OBJS) $(LIBFTDIR)/libft.a
+	ar rcs $@ $(OBJS) $(LIBFTDIR)/libft.a
 
-all: ${NAME}
-${NAME}: ${OBJS}
-	@${MAKE} -C ./libft
-	@${CC} ${CFLAGS} ${OBJS} ./libft/libft.a -o ${NAME}
+# Regla de construcción de objetos
+$(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
+	$(CC) $(CFLAGS) -c $< -o $@
 
-clean: 
-	@${MAKE} -C ./libft fclean
-	@${RM} ${OBJS}
+$(OBJDIR)/%.o: $(UTILSDIR)/%.c | $(OBJDIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Regla de construcción de la biblioteca Libft
+$(LIBFTDIR)/libft.a:
+	$(MAKE) -C $(LIBFTDIR)
+
+# Crear directorio de objetos
+$(OBJDIR):
+	mkdir -p $(OBJDIR)
+
+# Regla para limpiar archivos generados
+clean:
+	$(MAKE) -C $(LIBFTDIR) clean
+	rm -rf $(OBJDIR)
 
 fclean: clean
-	@${RM} ${NAME}
+	$(MAKE) -C $(LIBFTDIR) fclean
+	rm -f $(NAME)
 
-re: fclean all
+re: fclean $(NAME)
 
-.PHONY: all clean fclean re
+.PHONY: clean fclean re
+
+

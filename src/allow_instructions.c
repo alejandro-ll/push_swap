@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 int	swap(t_list **stack)
 {
@@ -24,7 +24,7 @@ int	swap(t_list **stack)
 	head = *stack;
 	next = head->next;
 	if (!head && !next)
-		ft_error("Error occured while swapping!");
+		//ft_error("Error occured while swapping!");
 	tmp_val = head->value;
 	tmp_index = head->index;
 	head->value = next->value;
