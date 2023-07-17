@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
+#    By: allera-m <allera-m@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/11 19:08:16 by marvin            #+#    #+#              #
-#    Updated: 2023/07/11 19:08:16 by marvin           ###   ########.fr        #
+#    Updated: 2023/07/17 16:59:03 by allera-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Nombre del archivo final
-NAME = push_swap.a
+NAME = push_swap
 
 # Directorios de código fuente y objetos
 SRCDIR = src
@@ -31,7 +31,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 # Regla de construcción del archivo final
 $(NAME): $(OBJS) $(LIBFTDIR)/libft.a
-	ar rcs $@ $(OBJS) $(LIBFTDIR)/libft.a
+	ar crs $@ $(OBJS) $(LIBFTDIR)/libft.a
 
 # Regla de construcción de objetos
 $(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
@@ -47,6 +47,8 @@ $(LIBFTDIR)/libft.a:
 # Crear directorio de objetos
 $(OBJDIR):
 	mkdir -p $(OBJDIR)
+
+all: $(NAME)
 
 # Regla para limpiar archivos generados
 clean:

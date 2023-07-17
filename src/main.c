@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: allera-m <allera-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 17:04:02 by marvin            #+#    #+#             */
-/*   Updated: 2023/07/06 17:04:02 by marvin           ###   ########.fr       */
+/*   Updated: 2023/07/17 16:45:55 by allera-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int main(int argc, char **argv)
     stack_a = NULL;
     stack_b = NULL;
     init_stack(stack_a, argc, argv);
-    if (is_sort(stack_a))
+    if (is_sorted(stack_a))
 	{
 		free_stack(stack_a);
 		free_stack(stack_b);

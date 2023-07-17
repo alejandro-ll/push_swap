@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   allow_instructions.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: allera-m <allera-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 12:02:29 by marvin            #+#    #+#             */
-/*   Updated: 2023/07/11 12:02:29 by marvin           ###   ########.fr       */
+/*   Updated: 2023/07/17 16:45:19 by allera-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	swap(t_list **stack)
 	int		tmp_val;
 	int		tmp_index;
 
+	tmp_val = 0;
 	if (ft_lstsize(*stack) < 2)
 		return (-1);
 	head = *stack;
