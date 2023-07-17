@@ -6,7 +6,7 @@
 /*   By: allera-m <allera-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 18:10:34 by allera-m          #+#    #+#             */
-/*   Updated: 2023/03/31 16:07:56 by allera-m         ###   ########.fr       */
+/*   Updated: 2023/04/07 19:19:37 by allera-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char			*substr;
+	size_t			i;
 
+	i = 0;
 	if (s == NULL)
 		return (NULL);
 	if (ft_strlen(s) < start)

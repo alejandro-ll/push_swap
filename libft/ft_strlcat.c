@@ -6,7 +6,7 @@
 /*   By: allera-m <allera-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 18:27:50 by allera-m          #+#    #+#             */
-/*   Updated: 2023/03/19 16:28:41 by allera-m         ###   ########.fr       */
+/*   Updated: 2023/04/13 14:20:11 by allera-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ size_t	ft_strlcat(char *dest, const char *src, size_t size)
 		return (size + ft_strlen(src));
 	i = ft_strlen(dest);
 	dest_size = 0;
-	while (src[dest_size] != '\0' && i + 1 < size)
+	while (src[dest_size] != '\0' && i + 1 < size)  // i++ < size   ++i
 	{
 		dest[i] = src[dest_size];
 		i++;

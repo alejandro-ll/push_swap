@@ -6,7 +6,7 @@
 #    By: allera-m <allera-m@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/11 19:08:16 by marvin            #+#    #+#              #
-#    Updated: 2023/07/17 16:59:03 by allera-m         ###   ########.fr        #
+#    Updated: 2023/07/17 18:05:56 by allera-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 # Regla de construcción del archivo final
 $(NAME): $(OBJS) $(LIBFTDIR)/libft.a
-	ar crs $@ $(OBJS) $(LIBFTDIR)/libft.a
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFTDIR)/libft.a
 
 # Regla de construcción de objetos
 $(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
