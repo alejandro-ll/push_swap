@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/06 17:11:37 by marvin            #+#    #+#             */
-/*   Updated: 2023/07/06 17:11:37 by marvin           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
@@ -18,7 +6,7 @@
 // Define the stack structure A & B
 typedef struct s_list
 {
-    int	            value;
+    int             value;
     int             index;
     struct s_list   *next;
 }   t_list;
@@ -33,7 +21,7 @@ int		ft_lstsize(t_list *head);
 
 void	ft_error(char *msg);
 void	ft_check_args(int argc, char **argv);
-int		is_sorted(t_list **stack);
+int		is_sorted(t_list *stack);
 int		get_distance(t_list **stack, int index);
 void	make_top(t_list **stack, int distance);
 void	free_stack(t_list **stack);

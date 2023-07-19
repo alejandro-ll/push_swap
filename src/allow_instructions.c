@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: allera-m <allera-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/11 12:02:29 by marvin            #+#    #+#             */
-/*   Updated: 2023/07/17 16:45:19 by allera-m         ###   ########.fr       */
+/*   Created: 2023/07/18 21:15:51 by allera-m          #+#    #+#             */
+/*   Updated: 2023/07/19 22:35:17 by allera-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,8 +158,8 @@ int	reverseRotate(t_list **stack)
 	{
 		if (head->next->next == NULL)
 		{
-			 head->next = NULL;
-			 break ;
+			head->next = NULL;
+			break ;
 		}
 		head = head->next;
 	}

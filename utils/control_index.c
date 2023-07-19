@@ -3,28 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   control_index.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: allera-m <allera-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/10 12:56:16 by marvin            #+#    #+#             */
-/*   Updated: 2023/07/10 12:56:16 by marvin           ###   ########.fr       */
+/*   Created: 2023/07/19 22:11:41 by allera-m          #+#    #+#             */
+/*   Updated: 2023/07/19 22:12:14 by allera-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//We must assign the value of the index ordered by data value traversing the list
-//Example: we have 13 42 7, the index values should be 2 3 1
-
 #include "../includes/push_swap.h"
 
-static t_list  *get_next_min(t_list **stack)
+static t_list	*get_next_min(t_list *stack)
 {
-    t_list  *min;
-    t_list  *head;
-    int min_exist;
+	t_list	*min;
+	t_list	*head;
+	int		min_exist;
 
-    min = NULL;
-    head = *stack;
-    min_exist = 0;
-    if (head)
+	min = NULL;
+	head = stack;
+	min_exist = 0;
+	if (head)
 	{
 		while (head)
 		{
@@ -36,7 +33,8 @@ static t_list  *get_next_min(t_list **stack)
 			head = head->next;
 		}
 	}
-    return (min);
+    //printf("Mínimo: %d\n", min ? min->value : -1);
+	return (min);
 }
 
 void	index_stack(t_list **stack)
@@ -45,10 +43,11 @@ void	index_stack(t_list **stack)
 	int		index;
 
 	index = 0;
-	head = get_next_min(stack);
+	head = get_next_min(*stack);
 	while (head)
 	{
 		head->index = index++;
-		head = get_next_min(stack);
+		//printf("Valor: %d, Índice: %d\n", head->value, head->index);
+		head = get_next_min(*stack);
 	}
 }

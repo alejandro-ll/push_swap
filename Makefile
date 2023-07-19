@@ -6,7 +6,7 @@
 #    By: allera-m <allera-m@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/11 19:08:16 by marvin            #+#    #+#              #
-#    Updated: 2023/07/17 18:05:56 by allera-m         ###   ########.fr        #
+#    Updated: 2023/07/17 19:48:26 by allera-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ OBJS = $(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(filter $(SRCDIR)/%.c, $(SRCS))
 
 # Compilador y flags
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 # Regla de construcción del archivo final
 $(NAME): $(OBJS) $(LIBFTDIR)/libft.a

@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   control_list.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/07 12:54:02 by marvin            #+#    #+#             */
-/*   Updated: 2023/07/07 12:54:02 by marvin           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../includes/push_swap.h"
 
 // Creates new node and returns the pointer of it
@@ -67,19 +55,17 @@ void	ft_lstadd_back(t_list **stack, t_list *new)
 }
 
 // Returns the size of the Linked List
-int	ft_lstsize(t_list *head)
+int ft_lstsize(t_list *head)
 {
-	size_t	i;
-	t_list	*tmp;
-
-	tmp = head;
-	i = 0;
-	while (tmp)
-	{
-		tmp = tmp->next;
-		i++;
-	}
-	return (i);
+    size_t i = 0;
+    t_list *tmp = head;
+    while (tmp)
+    {
+        tmp = tmp->next;
+        i++;
+    }
+    //printf("\nTamaño de la pila: %zu\n", i);
+    return i;
 }
 
 // Prints the Linked List
