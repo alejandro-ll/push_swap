@@ -6,7 +6,7 @@
 /*   By: allera-m <allera-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 21:15:51 by allera-m          #+#    #+#             */
-/*   Updated: 2023/07/19 22:35:17 by allera-m         ###   ########.fr       */
+/*   Updated: 2023/07/20 15:54:45 by allera-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,15 @@ int	swap(t_list **stack)
 	int		tmp_val;
 	int		tmp_index;
 
-	tmp_val = 0;
 	if (ft_lstsize(*stack) < 2)
 		return (-1);
 	head = *stack;
 	next = head->next;
-	if (!head && !next)
-		//ft_error("Error occured while swapping!");
+	if (!head || !next)
+	{
+        // Aquí puedes imprimir un mensaje de error o realizar alguna acción adecuada
+		return (-1);
+	}
 	tmp_val = head->value;
 	tmp_index = head->index;
 	head->value = next->value;
@@ -36,7 +38,7 @@ int	swap(t_list **stack)
 }
 
 int	sa(t_list **stack_a)
-{
+{	
 	if (swap(stack_a) == -1)
 		return (-1);
 	ft_putendl_fd("sa", 1);

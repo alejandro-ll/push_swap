@@ -24,14 +24,15 @@ static void	init_stack(t_list **stack, int argc, char **argv)
     index_stack(stack);
     printf("Tamaño de la pila: %d\n", ft_lstsize(*stack));
 	//if (argc == 2)
-		//ft_free(args);
+	//	ft_free(args);
 }
 
 static void	sort_stack(t_list **stack_a, t_list **stack_b)
 {
 	if (ft_lstsize(*stack_a) <= 5)
-		//printf("- 5 numeros mostro\n");
         simple_sort(stack_a, stack_b);
+    else
+		radix_sort(stack_a, stack_b);
 }
 
 int main(int argc, char **argv)
@@ -50,6 +51,7 @@ int main(int argc, char **argv)
 		free_stack(&stack_a);
 		return (0);
 	}
+    printList(stack_a);
     sort_stack(&stack_a, &stack_b);
     printList(stack_a);
 }
