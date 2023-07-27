@@ -42,6 +42,8 @@ int main(int argc, char **argv)
 
     if (argc < 2)
         return (-1);
+    /*if (check_for_duplicates(argc, argv))
+        return (-1);*/
     stack_a = NULL;
     stack_b = NULL;
     init_stack(&stack_a, argc, argv);

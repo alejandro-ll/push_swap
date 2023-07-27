@@ -6,8 +6,8 @@
 // Define the stack structure A & B
 typedef struct s_list
 {
-    int             value;
-    int             index;
+    int				value;
+    int				index;
     struct s_list   *next;
 }   t_list;
 
@@ -18,6 +18,8 @@ void	ft_lstadd_front(t_list **stack, t_list *new);
 void	ft_lstadd_back(t_list **stack, t_list *new);
 void	printList(t_list *head);
 int		ft_lstsize(t_list *head);
+
+int		check_for_duplicates(int argc, char **argv);
 
 void	ft_error(char *msg);
 void	ft_check_args(int argc, char **argv);
