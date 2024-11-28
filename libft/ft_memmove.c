@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: allera-m <allera-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 23:29:34 by allera-m          #+#    #+#             */
-/*   Updated: 2023/03/31 16:16:06 by allera-m         ###   ########.fr       */
+/*   Updated: 2024/11/28 09:56:42 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	i = 0;
 	sr = src;
 	ds = dst;
-	if (ds == '\0' && sr == '\0')
+	if (ds == NULL && sr == NULL)
 		return (NULL);
 	if (ds > sr)
 	{
