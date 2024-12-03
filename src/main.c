@@ -21,6 +21,8 @@ static void	init_stack(t_list **stack, int argc, char **argv)
         //printf("Se creó un nuevo nodo con el valor: %d\n", new->value);
 		i++;
 	}
+    if (argc == 2)
+        free(args);
     index_stack(stack);
     //printf("Tamaño de la pila: %d\n", ft_lstsize(*stack));
 }
@@ -63,5 +65,7 @@ int main(int argc, char **argv)
 	}
     //printList(stack_a);
     sort_stack(&stack_a, &stack_b);
-    printList(stack_a);
+    //printList(stack_a);
+    free_stack(&stack_a);
+    free_stack(&stack_b);
 }
