@@ -20,6 +20,7 @@ void	printList(t_list *head);
 int		ft_lstsize(t_list *head);
 
 int		check_for_duplicates(int argc, char **argv);
+int		check_for_non_numeric(int argc, char **argv);
 
 void	ft_error(char *msg);
 void	ft_check_args(int argc, char **argv);

@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 17:07:50 by allera-m          #+#    #+#             */
-/*   Updated: 2024/12/03 12:14:13 by user             ###   ########.fr       */
+/*   Updated: 2024/12/03 18:52:34 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,18 @@ char	**process_args(int argc, char **argv, int *new_argc)
 
     if (argc == 2)
     {
+        // Divide la cadena de entrada en un array de strings
         args = ft_split(argv[1], ' ');
         *new_argc = 0;
+        // Cuenta el número de elementos en el array args
         while (args[*new_argc])
             (*new_argc)++;
     }
     else
     {
-        args = argv;
-        *new_argc = argc;
+        // Si los argumentos no se pasaron como una sola cadena
+        args = argv + 1; // Saltar el nombre del programa
+        *new_argc = argc - 1;
     }
     return (args);
 }
@@ -38,14 +41,15 @@ int	check_for_duplicates(int argc, char **argv)
     int		num1;
     int		num2;
     char	**args;
+    int		new_argc;
 
-    args = process_args(argc, argv, &argc);
+    args = process_args(argc, argv, &new_argc);
     i = 0;
-    while (args[i])
+    while (i < new_argc)
     {
         num1 = ft_atoi(args[i]);
         j = i + 1;
-        while (args[j])
+        while (j < new_argc)
         {
             num2 = ft_atoi(args[j]);
             if (num1 == num2)
@@ -63,25 +67,33 @@ int	check_for_duplicates(int argc, char **argv)
     return (0);
 }
 
-/*
-int	count_words(const char *str, char delimiter)
+int	check_for_non_numeric(int argc, char **argv)
 {
-	int	count;
-	int	is_word;
+    int		i;
+    int		j;
+    char	**args;
+    int		new_argc;
 
-	count = 0;
-	is_word = 0;
-
-	while (*str)
-	{
-		if (*str == delimiter)
-			is_word = 0;
-		else if (!is_word)
-		{
-			is_word = 1;
-			count++;
-		}
-		str++;
-	}
-	return (count);
-}*/
+    args = process_args(argc, argv, &new_argc);
+    i = 0;
+    while (i < new_argc)
+    {
+        j = 0;
+        if ((args[i][j] == '-' || args[i][j] == '+') && args[i][j + 1] != '\0')
+            j++;
+        while (args[i][j])
+        {
+            if (!ft_isdigit(args[i][j]))
+            {
+                if (argc == 2)
+                    free(args);
+                return (1);
+            }
+            j++;
+        }
+        i++;
+    }
+    if (argc == 2)
+        free(args);
+    return (0);
+}

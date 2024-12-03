@@ -45,6 +45,11 @@ int main(int argc, char **argv)
         ft_putstr_fd("Error\n", 2);
         return (1);
     }
+    if (check_for_non_numeric(argc, argv))
+    {
+        ft_putstr_fd("Error\n", 2);
+        return (1);
+    }
     /*if (check_for_duplicates(argc, argv))
         return (-1);*/
     stack_a = NULL;
@@ -58,5 +63,5 @@ int main(int argc, char **argv)
 	}
     //printList(stack_a);
     sort_stack(&stack_a, &stack_b);
-    //printList(stack_a);
+    printList(stack_a);
 }
