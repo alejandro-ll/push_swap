@@ -40,6 +40,11 @@ int main(int argc, char **argv)
 
     if (argc < 2)
         return (-1);
+    if (check_for_duplicates(argc, argv))
+    {
+        ft_putstr_fd("Error\n", 2);
+        return (1);
+    }
     /*if (check_for_duplicates(argc, argv))
         return (-1);*/
     stack_a = NULL;
