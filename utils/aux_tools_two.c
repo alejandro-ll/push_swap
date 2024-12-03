@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 17:07:50 by allera-m          #+#    #+#             */
-/*   Updated: 2024/12/03 18:52:34 by user             ###   ########.fr       */
+/*   Updated: 2024/12/03 19:06:50 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,42 @@ char	**process_args(int argc, char **argv, int *new_argc)
 
     if (argc == 2)
     {
-        // Divide la cadena de entrada en un array de strings
         args = ft_split(argv[1], ' ');
         *new_argc = 0;
-        // Cuenta el número de elementos en el array args
         while (args[*new_argc])
             (*new_argc)++;
     }
     else
     {
-        // Si los argumentos no se pasaron como una sola cadena
-        args = argv + 1; // Saltar el nombre del programa
+        args = argv + 1;
         *new_argc = argc - 1;
     }
     return (args);
+}
+
+int	is_number_within_limits(const char *str)
+{
+    long	num;
+    int		sign;
+    int		i;
+
+    num = 0;
+    sign = 1;
+    i = 0;
+    if (str[i] == '-' || str[i] == '+')
+    {
+        if (str[i] == '-')
+            sign = -1;
+        i++;
+    }
+    while (str[i])
+    {
+        num = num * 10 + (str[i] - '0');
+        if ((sign == 1 && num > 2147483647) || (sign == -1 && num > 2147483648))
+            return (0);
+        i++;
+    }
+    return (1);
 }
 
 int	check_for_duplicates(int argc, char **argv)
@@ -90,6 +112,12 @@ int	check_for_non_numeric(int argc, char **argv)
                 return (1);
             }
             j++;
+        }
+		if (!is_number_within_limits(args[i]))
+        {
+            if (argc == 2)
+                free(args);
+            return (1);
         }
         i++;
     }
