@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   allow_instructions.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: allera-m <allera-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 21:15:51 by allera-m          #+#    #+#             */
-/*   Updated: 2023/07/20 15:54:45 by allera-m         ###   ########.fr       */
+/*   Updated: 2024/12/03 10:14:26 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	swap(t_list **stack)
 	next = head->next;
 	if (!head || !next)
 	{
-        // Aquí puedes imprimir un mensaje de error o realizar alguna acción adecuada
 		return (-1);
 	}
 	tmp_val = head->value;

@@ -18,13 +18,11 @@ static void	init_stack(t_list **stack, int argc, char **argv)
 	{
 		new = ft_lstnew(ft_atoi(args[i]));
 		ft_lstadd_back(stack, new);
-        printf("Se creó un nuevo nodo con el valor: %d\n", new->value);
+        //printf("Se creó un nuevo nodo con el valor: %d\n", new->value);
 		i++;
 	}
     index_stack(stack);
-    printf("Tamaño de la pila: %d\n", ft_lstsize(*stack));
-	//if (argc == 2)
-	//	ft_free(args);
+    //printf("Tamaño de la pila: %d\n", ft_lstsize(*stack));
 }
 
 static void	sort_stack(t_list **stack_a, t_list **stack_b)
@@ -53,7 +51,7 @@ int main(int argc, char **argv)
 		free_stack(&stack_a);
 		return (0);
 	}
-    printList(stack_a);
+    //printList(stack_a);
     sort_stack(&stack_a, &stack_b);
-    printList(stack_a);
+    //printList(stack_a);
 }
