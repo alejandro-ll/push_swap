@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: allera-m <allera-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/07 13:18:51 by allera-m          #+#    #+#             */
-/*   Updated: 2023/03/27 13:10:30 by allera-m         ###   ########.fr       */
+/*   Created: 2023/07/13 14:34:46 by marvin            #+#    #+#             */
+/*   Updated: 2024/07/18 23:44:57 by allera-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 size_t	ft_strlen(const char *str)
 {
-	int	i;
+	size_t	i;
 
+	if (!str)
+		return (0);
 	i = 0;
 	while (str[i] != '\0')
-	{
 		i++;
-	}
 	return (i);
 }

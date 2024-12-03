@@ -3,103 +3,81 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: allera-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: allera-m <allera-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/10 15:09:18 by allera-m          #+#    #+#             */
-/*   Updated: 2023/04/10 15:09:21 by allera-m         ###   ########.fr       */
+/*   Created: 2023/04/04 17:27:45 by allera-m          #+#    #+#             */
+/*   Updated: 2024/07/23 16:00:28 by allera-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	**array_creator(char const *sOri, char cCmp, int *nItems)
+static int	ft_count_words(const char *s, char c)
 {
-	char	**a_point;
-	int		*p_point;
-	int		ia;
+	int	words;
 
-	p_point = nItems;
-	*p_point = 0;
-	ia = 0;
-	while (*(sOri + ia) != '\0')
+	words = 0;
+	while (*s != '\0')
 	{
-		if (*(sOri + ia) == cCmp && *(sOri + ia - 1) != cCmp)
-			*p_point += 1;
-		ia ++;
+		while (*s == c)
+			s++;
+		if (*s != '\0')
+			words++;
+		while (*s != '\0' && *s != c)
+			s++;
 	}
-	if (*sOri != '\0')
-		*p_point += 1;
-	a_point = (char **) malloc((*p_point + 1) * sizeof(char *));
-	if (a_point != NULL)
-		a_point[*p_point] = NULL;
-	return (a_point);
+	return (words);
 }
 
-static void	array_free(char **aPointers, size_t nDim)
+static int	ft_count_chars(const char *s, char c)
 {
-	size_t	ia;
+	int	chars;
 
-	ia = 0;
-	while (ia <= nDim)
+	chars = 0;
+	while (*s != '\0' && *s != c)
 	{
-		free(aPointers[ia]);
-		aPointers[ia] = NULL;
-		ia ++;
+		chars++;
+		s++;
 	}
-	free(aPointers);
+	return (chars);
 }
 
-static void	substring_creator(char **aInitial, char *sOri, char cCmp, int nSub)
+static void	ft_free(char **arr, int words)
 {
-	int		ia;
-	char	*p_start;
-	char	*p_end;
+	int	i;
 
-	p_start = sOri;
-	ia = 0;
-	if ((nSub > 0) && *sOri != '\0')
+	i = 0;
+	while (i < words)
 	{
-		while (ia < (nSub - 1))
-		{
-			p_end = ft_strchr(p_start, cCmp);
-			aInitial[ia] = ft_substr(p_start, 0, (p_end - p_start));
-			if (aInitial[ia] == NULL)
-			{
-				array_free(aInitial, ia);
-				return ;
-			}
-			while (*p_end == cCmp)
-				p_end ++;
-			p_start = p_end;
-			ia ++;
-		}
-		aInitial[ia] = ft_strdup(p_start);
+		free(arr[i]);
+		i++;
 	}
+	free(arr);
 }
 
-char	**ft_split(char const *sMain, char cCmp)
+char	**ft_split(char const *s, char c)
 {
-	char	**a_point;
-	char	*p_new;
-	char	s_set[2];
-	int		n_subs;
+	char	**arr;
+	int		words;
+	int		i;
 
-	*s_set = cCmp;
-	*(s_set + 1) = '\0';
-	if (sMain != NULL)
+	if (!s)
+		return (NULL);
+	words = ft_count_words(s, c);
+	arr = (char **)malloc(sizeof(char *) * (words + 1));
+	if (!arr)
+		return (NULL);
+	i = 0;
+	while (i < words)
 	{
-		p_new = ft_strtrim(sMain, s_set);
-		if (p_new != NULL)
-		{
-			a_point = array_creator(p_new, cCmp, &n_subs);
-			if (a_point != NULL)
-			{
-				substring_creator(a_point, p_new, cCmp, n_subs);
-				free(p_new);
-				p_new = NULL;
-				return (a_point);
-			}
-		}
+		while (*s == c)
+			s++;
+		arr[i] = ft_substr(s, 0, ft_count_chars(s, c));
+		if (!arr[i])
+			return (ft_free(arr, i), NULL);
+		s += ft_count_chars(s, c);
+		i++;
 	}
-	return (NULL);
+	arr[i] = NULL;
+	return (arr);
 }
