@@ -6,7 +6,7 @@
 /*   By: allera-m <allera-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 18:27:35 by allera-m          #+#    #+#             */
-/*   Updated: 2024/12/10 18:53:42 by allera-m         ###   ########.fr       */
+/*   Updated: 2024/12/10 20:01:52 by allera-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,27 @@ static void	sort_stack(t_list **stack_a, t_list **stack_b)
 		selection_sort(stack_a, stack_b);
 }
 
-int	main(int argc, char **argv)
+static int	process_stacks(int argc, char **argv)
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
 
+	stack_a = NULL;
+	stack_b = NULL;
+	init_stack(&stack_a, argc, argv);
+	if (is_sorted(stack_a))
+	{
+		free_stack(&stack_a);
+		return (0);
+	}
+	sort_stack(&stack_a, &stack_b);
+	free_stack(&stack_a);
+	free_stack(&stack_b);
+	return (1);
+}
+
+int	main(int argc, char **argv)
+{
 	if (argc < 2)
 		return (-1);
 	if (check_for_duplicates(argc, argv))
@@ -62,15 +78,5 @@ int	main(int argc, char **argv)
 		ft_putstr_fd("Error\n", 2);
 		return (1);
 	}
-	stack_a = NULL;
-	stack_b = NULL;
-	init_stack(&stack_a, argc, argv);
-	if (is_sorted(stack_a))
-	{
-		free_stack(&stack_a);
-		return (0);
-	}
-	sort_stack(&stack_a, &stack_b);
-	free_stack(&stack_a);
-	free_stack(&stack_b);
+	return (process_stacks(argc, argv));
 }

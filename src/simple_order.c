@@ -6,7 +6,7 @@
 /*   By: allera-m <allera-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 20:30:58 by allera-m          #+#    #+#             */
-/*   Updated: 2024/12/10 18:24:34 by allera-m         ###   ########.fr       */
+/*   Updated: 2024/12/10 20:07:03 by allera-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,29 +39,7 @@ static void	sort_3(t_list **stack_a)
 	next_min = get_min(stack_a, min);
 	if (is_sorted(*stack_a))
 		return ;
-	if (head->index == min && head->next->index != next_min)
-	{
-		ra(stack_a);
-		sa(stack_a);
-		rra(stack_a);
-	}
-	else if (head->index == next_min)
-	{
-		if (head->next->index == min)
-			sa(stack_a);
-		else
-			rra(stack_a);
-	}
-	else
-	{
-		if (head->next->index == min)
-			ra(stack_a);
-		else
-		{
-			sa(stack_a);
-			rra(stack_a);
-		}
-	}
+	sort_3_helper(stack_a, head, min, next_min);
 }
 
 static void	sort_4(t_list **stack_a, t_list **stack_b)

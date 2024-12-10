@@ -6,7 +6,7 @@
 /*   By: allera-m <allera-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 21:15:51 by allera-m          #+#    #+#             */
-/*   Updated: 2024/12/10 19:13:00 by allera-m         ###   ########.fr       */
+/*   Updated: 2024/12/10 20:04:52 by allera-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,24 +41,6 @@ int	sa(t_list **stack_a)
 	if (swap(stack_a) == -1)
 		return (-1);
 	ft_putendl_fd("sa", 1);
-	return (0);
-}
-
-int	sb(t_list **stack_b)
-{
-	if (swap(stack_b) == -1)
-		return (-1);
-	ft_putendl_fd("sb", 1);
-	return (0);
-}
-
-int	ss(t_list **stack_a, t_list **stack_b)
-{
-	if ((ft_lstsize(*stack_a) < 2) || (ft_lstsize(*stack_b) < 2))
-		return (-1);
-	swap(stack_a);
-	swap(stack_b);
-	ft_putendl_fd("ss", 1);
 	return (0);
 }
 
@@ -103,113 +85,4 @@ int	pb(t_list **stack_a, t_list **stack_b)
 		return (-1);
 	ft_putendl_fd("pb", 1);
 	return (0);
-}
-
-int	rotate(t_list **stack)
-{
-	t_list	*head;
-	t_list	*tail;
-
-	if (ft_lstsize(*stack) < 2)
-		return (-1);
-	head = *stack;
-	tail = ft_lstlast(head);
-	*stack = head->next;
-	head->next = NULL;
-	tail->next = head;
-	return (0);
-}
-
-int	ra(t_list **stack_a)
-{
-	if (rotate(stack_a) == -1)
-		return (-1);
-	ft_putendl_fd("ra", 1);
-	return (0);
-}
-
-int	rb(t_list **stack_b)
-{
-	if (rotate(stack_b) == -1)
-		return (-1);
-	ft_putendl_fd("rb", 1);
-	return (0);
-}
-
-int	rr(t_list **stack_a, t_list **stack_b)
-{
-	if ((ft_lstsize(*stack_a) < 2) || (ft_lstsize(*stack_b) < 2))
-		return (-1);
-	rotate(stack_a);
-	rotate(stack_b);
-	ft_putendl_fd("rr", 1);
-	return (0);
-}
-
-int	reverseRotate(t_list **_stack)
-{
-	t_list	*head;
-	t_list	*tail;
-
-	if (ft_lstsize(*_stack) < 2)
-		return (-1);
-	head = *_stack;
-	tail = ft_lstlast(head);
-	while (head)
-	{
-		if (head->next->next == NULL)
-		{
-			head->next = NULL;
-			break ;
-		}
-		head = head->next;
-	}
-	tail->next = *_stack;
-	*_stack = tail;
-	return (0);
-}
-
-int	rra(t_list **stack_a)
-{
-	if (reverseRotate(stack_a) == -1)
-		return (-1);
-	ft_putendl_fd("rra", 1);
-	return (0);
-}
-
-int	rrb(t_list **stack_b)
-{
-	if (reverseRotate(stack_b) == -1)
-		return (-1);
-	ft_putendl_fd("rrb", 1);
-	return (0);
-}
-
-int	rrr(t_list **stack_a, t_list **stack_b)
-{
-	if ((ft_lstsize(*stack_a) < 2) || (ft_lstsize(*stack_b) < 2))
-		return (-1);
-	reverseRotate(stack_a);
-	reverseRotate(stack_b);
-	ft_putendl_fd("rrr", 1);
-	return (0);
-}
-
-void make_top(t_list **stack, int distance)
-{
-    if (distance <= ft_lstsize(*stack) / 2)
-    {
-        while (distance-- > 0)
-        {
-            ra(stack); // Rotate stack up
-        }
-    }
-    else
-    {
-        distance = ft_lstsize(*stack) - distance;
-        while (distance-- > 0)
-        {
-            rra(stack); // Rotate stack down
-        }
-    }
 }
