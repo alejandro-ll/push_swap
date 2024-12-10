@@ -6,7 +6,7 @@
 /*   By: allera-m <allera-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 19:45:09 by allera-m          #+#    #+#             */
-/*   Updated: 2024/12/10 20:08:32 by allera-m         ###   ########.fr       */
+/*   Updated: 2024/12/10 20:12:37 by allera-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void				selection_sort(t_list **stack_a, t_list **stack_b);
 void				simple_sort(t_list **stack_a, t_list **stack_b);
 void				index_stack(t_list **stack);
 void				sort_5(t_list **stack_a, t_list **stack_b);
-static void			sort_3_helper(t_list **stack_a, t_list *head,
+void				sort_3_helper(t_list **stack_a, t_list *head,
 						int min, int next_min);
 
 // Instruction functions

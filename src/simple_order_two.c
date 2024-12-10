@@ -6,13 +6,13 @@
 /*   By: allera-m <allera-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 20:02:59 by allera-m          #+#    #+#             */
-/*   Updated: 2024/12/10 20:06:44 by allera-m         ###   ########.fr       */
+/*   Updated: 2024/12/10 20:12:23 by allera-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static void	sort_3_helper(t_list **stack_a, t_list *head, int min, int next_min)
+void	sort_3_helper(t_list **stack_a, t_list *head, int min, int next_min)
 {
 	if (head->index == min && head->next->index != next_min)
 	{
