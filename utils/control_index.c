@@ -6,7 +6,7 @@
 /*   By: allera-m <allera-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 22:11:41 by allera-m          #+#    #+#             */
-/*   Updated: 2023/07/19 22:12:14 by allera-m         ###   ########.fr       */
+/*   Updated: 2024/12/10 18:28:15 by allera-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ static t_list	*get_next_min(t_list *stack)
 			head = head->next;
 		}
 	}
-    //printf("Mínimo: %d\n", min ? min->value : -1);
 	return (min);
 }
 
@@ -47,7 +46,6 @@ void	index_stack(t_list **stack)
 	while (head)
 	{
 		head->index = index++;
-		//printf("Valor: %d, Índice: %d\n", head->value, head->index);
 		head = get_next_min(*stack);
 	}
 }

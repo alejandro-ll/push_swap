@@ -31,7 +31,9 @@ void	free_stack(t_list **stack);
 void	ft_free(char **str);
 
 // Algorithm utils
-void	radix_sort(t_list **stack_a, t_list **stack_b);
+//void	radix_sort(t_list **stack_a, t_list **stack_b);
+int	find_min_index(t_list *stack);
+void	selection_sort(t_list **stack_a, t_list **stack_b);
 void	simple_sort(t_list **stack_a, t_list **stack_b);
 void	index_stack(t_list **stack);
 void	sort_5(t_list **stack_a, t_list **stack_b);

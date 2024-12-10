@@ -1,11 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   control_list.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: allera-m <allera-m@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/10 18:26:56 by allera-m          #+#    #+#             */
+/*   Updated: 2024/12/10 18:27:23 by allera-m         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 
-// Creates new node and returns the pointer of it
 t_list	*ft_lstnew(int value)
 {
 	t_list	*new;
 
-	new = (t_list *) malloc(sizeof(*new));
+	new = (t_list *)malloc(sizeof(*new));
 	if (!new)
 		return (NULL);
 	new->value = value;
@@ -14,14 +25,12 @@ t_list	*ft_lstnew(int value)
 	return (new);
 }
 
-// Adds the specified node to a stack (list) making it the head
 void	ft_lstadd_front(t_list **stack, t_list *new)
 {
 	new->next = *stack;
 	*stack = new;
 }
 
-// Returns the last node of a list 
 t_list	*ft_lstlast(t_list *head)
 {
 	t_list	*tmp;
@@ -36,7 +45,6 @@ t_list	*ft_lstlast(t_list *head)
 	return (tmp);
 }
 
-// Adds the specified node to a stack (list) making it the last node
 void	ft_lstadd_back(t_list **stack, t_list *new)
 {
 	t_list	*n;
@@ -54,21 +62,21 @@ void	ft_lstadd_back(t_list **stack, t_list *new)
 	}
 }
 
-// Returns the size of the Linked List
-int ft_lstsize(t_list *head)
+int	ft_lstsize(t_list *head)
 {
-    size_t i = 0;
-    t_list *tmp = head;
-    while (tmp)
-    {
-        tmp = tmp->next;
-        i++;
-    }
-    //printf("\nTamaño de la pila: %zu\n", i);
-    return i;
+	size_t	i;
+	t_list	*tmp;
+
+	i = 0;
+	tmp = head;
+	while (tmp)
+	{
+		tmp = tmp->next;
+		i++;
+	}
+	return (i);
 }
 
-// Prints the Linked List
 void	printList(t_list *head)
 {
 	t_list	*tmp;

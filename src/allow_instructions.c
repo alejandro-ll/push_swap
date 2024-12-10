@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   allow_instructions.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: allera-m <allera-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 21:15:51 by allera-m          #+#    #+#             */
-/*   Updated: 2024/12/03 10:14:26 by user             ###   ########.fr       */
+/*   Updated: 2024/12/10 19:13:00 by allera-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	swap(t_list **stack)
 }
 
 int	sa(t_list **stack_a)
-{	
+{
 	if (swap(stack_a) == -1)
 		return (-1);
 	ft_putendl_fd("sa", 1);
@@ -53,7 +53,7 @@ int	sb(t_list **stack_b)
 }
 
 int	ss(t_list **stack_a, t_list **stack_b)
-{	
+{
 	if ((ft_lstsize(*stack_a) < 2) || (ft_lstsize(*stack_b) < 2))
 		return (-1);
 	swap(stack_a);
@@ -146,14 +146,14 @@ int	rr(t_list **stack_a, t_list **stack_b)
 	return (0);
 }
 
-int	reverseRotate(t_list **stack)
+int	reverseRotate(t_list **_stack)
 {
 	t_list	*head;
 	t_list	*tail;
 
-	if (ft_lstsize(*stack) < 2)
+	if (ft_lstsize(*_stack) < 2)
 		return (-1);
-	head = *stack;
+	head = *_stack;
 	tail = ft_lstlast(head);
 	while (head)
 	{
@@ -164,8 +164,8 @@ int	reverseRotate(t_list **stack)
 		}
 		head = head->next;
 	}
-	tail->next = *stack;
-	*stack = tail;
+	tail->next = *_stack;
+	*_stack = tail;
 	return (0);
 }
 
@@ -193,4 +193,23 @@ int	rrr(t_list **stack_a, t_list **stack_b)
 	reverseRotate(stack_b);
 	ft_putendl_fd("rrr", 1);
 	return (0);
+}
+
+void make_top(t_list **stack, int distance)
+{
+    if (distance <= ft_lstsize(*stack) / 2)
+    {
+        while (distance-- > 0)
+        {
+            ra(stack); // Rotate stack up
+        }
+    }
+    else
+    {
+        distance = ft_lstsize(*stack) - distance;
+        while (distance-- > 0)
+        {
+            rra(stack); // Rotate stack down
+        }
+    }
 }

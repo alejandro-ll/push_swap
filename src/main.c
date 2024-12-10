@@ -1,16 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: allera-m <allera-m@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/10 18:27:35 by allera-m          #+#    #+#             */
+/*   Updated: 2024/12/10 18:53:42 by allera-m         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 
 static void	init_stack(t_list **stack, int argc, char **argv)
 {
-    t_list  *new;
-    char    **args;
-    int     i;
+	t_list	*new;
+	char	**args;
+	int		i;
 
-    i = 0;
-    if (argc == 2)
-        args = ft_split(argv[1], ' ');
+	i = 0;
+	if (argc == 2)
+		args = ft_split(argv[1], ' ');
 	else
-    {
+	{
 		i = 1;
 		args = argv;
 	}
@@ -18,54 +30,47 @@ static void	init_stack(t_list **stack, int argc, char **argv)
 	{
 		new = ft_lstnew(ft_atoi(args[i]));
 		ft_lstadd_back(stack, new);
-        //printf("Se creó un nuevo nodo con el valor: %d\n", new->value);
 		i++;
 	}
-    if (argc == 2)
-        free(args);
-    index_stack(stack);
-    //printf("Tamaño de la pila: %d\n", ft_lstsize(*stack));
+	if (argc == 2)
+		free(args);
+	index_stack(stack);
 }
 
 static void	sort_stack(t_list **stack_a, t_list **stack_b)
 {
 	if (ft_lstsize(*stack_a) <= 5)
-        simple_sort(stack_a, stack_b);
-    else
-		radix_sort(stack_a, stack_b);
+		simple_sort(stack_a, stack_b);
+	else
+		selection_sort(stack_a, stack_b);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-    t_list  *stack_a;
-    t_list  *stack_b;
+	t_list	*stack_a;
+	t_list	*stack_b;
 
-    if (argc < 2)
-        return (-1);
-    if (check_for_duplicates(argc, argv))
-    {
-        ft_putstr_fd("Error\n", 2);
-        return (1);
-    }
-    if (check_for_non_numeric(argc, argv))
-    {
-        ft_putstr_fd("Error\n", 2);
-        return (1);
-    }
-    /*if (check_for_duplicates(argc, argv))
-        return (-1);*/
-    stack_a = NULL;
-    stack_b = NULL;
-    init_stack(&stack_a, argc, argv);
-    if (is_sorted(stack_a))
+	if (argc < 2)
+		return (-1);
+	if (check_for_duplicates(argc, argv))
 	{
-        //printf("LISTA YA ORDENADA! BIEN QUE BIEN\n");
+		ft_putstr_fd("Error\n", 2);
+		return (1);
+	}
+	if (check_for_non_numeric(argc, argv))
+	{
+		ft_putstr_fd("Error\n", 2);
+		return (1);
+	}
+	stack_a = NULL;
+	stack_b = NULL;
+	init_stack(&stack_a, argc, argv);
+	if (is_sorted(stack_a))
+	{
 		free_stack(&stack_a);
 		return (0);
 	}
-    //printList(stack_a);
-    sort_stack(&stack_a, &stack_b);
-    //printList(stack_a);
-    free_stack(&stack_a);
-    free_stack(&stack_b);
+	sort_stack(&stack_a, &stack_b);
+	free_stack(&stack_a);
+	free_stack(&stack_b);
 }

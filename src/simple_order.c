@@ -6,7 +6,7 @@
 /*   By: allera-m <allera-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 20:30:58 by allera-m          #+#    #+#             */
-/*   Updated: 2023/07/20 15:11:02 by allera-m         ###   ########.fr       */
+/*   Updated: 2024/12/10 18:24:34 by allera-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,6 @@ void	simple_sort(t_list **stack_a, t_list **stack_b)
 		|| ft_lstsize(*stack_a) == 1)
 		return ;
 	size = ft_lstsize(*stack_a);
-	//printf("\nesto es el size de la lista %d", size);
 	if (size == 2)
 		sa(stack_a);
 	else if (size == 3)
