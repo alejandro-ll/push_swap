@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 16:53:12 by allera-m          #+#    #+#             */
-/*   Updated: 2024/12/11 09:58:37 by user             ###   ########.fr       */
+/*   Updated: 2024/12/11 13:00:06 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,38 +55,41 @@ void radix_sort(t_list **stack_a, t_list **stack_b) {
     }
 }
 */
+
+// Función optimizada para obtener el índice máximo de la pila
+
+// Función optimizada para obtener el índice máximo de la pila
+
+#include "../includes/push_swap.h"
+
 static int get_max_index(t_list *stack) {
     int max_index = stack->index;
-
     while (stack) {
         if (stack->index > max_index)
             max_index = stack->index;
         stack = stack->next;
     }
-
     return max_index;
 }
 
 static int get_position(t_list *stack, int target_index) {
     int position = 0;
-
     while (stack) {
         if (stack->index == target_index)
             break;
         position++;
         stack = stack->next;
     }
-
     return position;
 }
 
 static void push_to_b_in_chunks(t_list **stack_a, t_list **stack_b, int chunk_start, int chunk_end) {
     int pushed = 0;
     int total_elements = chunk_end - chunk_start + 1;
+    int current_index;
 
     while (pushed < total_elements && ft_lstsize(*stack_a) > 0) {
-        int current_index = (*stack_a)->index;
-
+        current_index = (*stack_a)->index;
         if (current_index >= chunk_start && current_index <= chunk_end) {
             pb(stack_a, stack_b);
             pushed++;
@@ -97,17 +100,31 @@ static void push_to_b_in_chunks(t_list **stack_a, t_list **stack_b, int chunk_st
 }
 
 static void insert_back_to_a(t_list **stack_a, t_list **stack_b) {
+    int max_index;
+    int position;
+    int size;
+
     while (ft_lstsize(*stack_b) > 0) {
-        int max_index = get_max_index(*stack_b);
-        int position = get_position(*stack_b, max_index);
-        int size = ft_lstsize(*stack_b);
+        max_index = get_max_index(*stack_b);
+        position = get_position(*stack_b, max_index);
+        size = ft_lstsize(*stack_b);
 
         if (position <= size / 2) {
-            while ((*stack_b)->index != max_index)
-                rb(stack_b);
+            while ((*stack_b)->index != max_index) {
+                if ((*stack_a)->index != get_max_index(*stack_a) + 1) {
+                    rr(stack_a, stack_b);
+                } else {
+                    rb(stack_b);
+                }
+            }
         } else {
-            while ((*stack_b)->index != max_index)
-                rrb(stack_b);
+            while ((*stack_b)->index != max_index) {
+                if ((*stack_a)->index != get_max_index(*stack_a) + 1) {
+                    rrr(stack_a, stack_b);
+                } else {
+                    rrb(stack_b);
+                }
+            }
         }
         pa(stack_a, stack_b);
     }
@@ -116,13 +133,16 @@ static void insert_back_to_a(t_list **stack_a, t_list **stack_b) {
 void chunk_sort(t_list **stack_a, t_list **stack_b) {
     int total_size = ft_lstsize(*stack_a);
     int chunk_count = 5; // Dividimos en 5 chunks para 100 elementos
-    int chunk_size = (total_size + chunk_count - 1) / chunk_count; // Redondeo hacia arriba
+    int chunk_size = (total_size + chunk_count - 1) / chunk_count;
+    int i = 0;
 
-    for (int i = 0; i < chunk_count; i++) {
+    while (i < chunk_count) {
         int chunk_start = i * chunk_size;
-        int chunk_end = ((i + 1) * chunk_size - 1 < total_size) ? (i + 1) * chunk_size - 1 : total_size - 1;
+        int next_chunk_end = (i + 1) * chunk_size - 1;
+        int chunk_end = (next_chunk_end < total_size) ? next_chunk_end : total_size - 1;
 
         push_to_b_in_chunks(stack_a, stack_b, chunk_start, chunk_end);
+        i++;
     }
 
     insert_back_to_a(stack_a, stack_b);
