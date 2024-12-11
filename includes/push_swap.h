@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: allera-m <allera-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 19:45:09 by allera-m          #+#    #+#             */
-/*   Updated: 2024/12/10 20:12:37 by allera-m         ###   ########.fr       */
+/*   Updated: 2024/12/11 09:26:59 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void				ft_free(char **str);
 // Algorithm utils
 // void	radix_sort(t_list **stack_a, t_list **stack_b);
 int					find_min_index(t_list *stack);
-void				selection_sort(t_list **stack_a, t_list **stack_b);
+void				chunk_sort(t_list **stack_a, t_list **stack_b);
 void				simple_sort(t_list **stack_a, t_list **stack_b);
 void				index_stack(t_list **stack);
 void				sort_5(t_list **stack_a, t_list **stack_b);
@@ -58,12 +58,19 @@ void				sort_3_helper(t_list **stack_a, t_list *head,
 int					swap(t_list **stack);
 int					push(t_list **stack_to, t_list **stack_from);
 int					rotate(t_list **stack);
-int					reverseRotate(t_list **stack);
+int					reverserotate(t_list **stack);
 
 int					sa(t_list **stack_a);
 int					pa(t_list **stack_a, t_list **stack_b);
 int					pb(t_list **stack_b, t_list **stack_a);
 int					ra(t_list **stack_a);
 int					rra(t_list **stack_a);
+int					rb(t_list **stack_b);
+int					sb(t_list **stack_b);
+int					ss(t_list **stack_a, t_list **stack_b);
+int					rr(t_list **stack_a, t_list **stack_b);
+int					rrb(t_list **stack_b);
+int					rrr(t_list **stack_a, t_list **stack_b);
+
 
 #endif
