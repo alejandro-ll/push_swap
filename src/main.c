@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 18:27:35 by allera-m          #+#    #+#             */
-/*   Updated: 2024/12/11 09:26:20 by user             ###   ########.fr       */
+/*   Updated: 2024/12/12 11:51:01 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,9 @@ static void	sort_stack(t_list **stack_a, t_list **stack_b)
 	if (ft_lstsize(*stack_a) <= 5)
 		simple_sort(stack_a, stack_b);
 	else
-		chunk_sort(stack_a, stack_b);
+	{
+		chunk_sort(stack_a, stack_b, 6);
+		insert_back_to_a(stack_a, stack_b); }
 }
 
 static int	process_stacks(int argc, char **argv)

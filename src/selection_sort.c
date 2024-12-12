@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 16:53:12 by allera-m          #+#    #+#             */
-/*   Updated: 2024/12/11 13:00:06 by user             ###   ########.fr       */
+/*   Updated: 2024/12/12 11:37:50 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,67 +83,42 @@ static int get_position(t_list *stack, int target_index) {
     return position;
 }
 
-static void push_to_b_in_chunks(t_list **stack_a, t_list **stack_b, int chunk_start, int chunk_end) {
-    int pushed = 0;
-    int total_elements = chunk_end - chunk_start + 1;
-    int current_index;
 
-    while (pushed < total_elements && ft_lstsize(*stack_a) > 0) {
-        current_index = (*stack_a)->index;
-        if (current_index >= chunk_start && current_index <= chunk_end) {
-            pb(stack_a, stack_b);
-            pushed++;
-        } else {
-            ra(stack_a);
-        }
-    }
-}
-
-static void insert_back_to_a(t_list **stack_a, t_list **stack_b) {
-    int max_index;
-    int position;
-    int size;
-
-    while (ft_lstsize(*stack_b) > 0) {
-        max_index = get_max_index(*stack_b);
-        position = get_position(*stack_b, max_index);
-        size = ft_lstsize(*stack_b);
+void insert_back_to_a(t_list **stack_a, t_list **stack_b) {
+    while (*stack_b) {
+        int max_index = get_max_index(*stack_b);
+        int position = get_position(*stack_b, max_index);
+        int size = ft_lstsize(*stack_b);
 
         if (position <= size / 2) {
-            while ((*stack_b)->index != max_index) {
-                if ((*stack_a)->index != get_max_index(*stack_a) + 1) {
-                    rr(stack_a, stack_b);
-                } else {
-                    rb(stack_b);
-                }
-            }
+            while ((*stack_b)->index != max_index) rb(stack_b);
         } else {
-            while ((*stack_b)->index != max_index) {
-                if ((*stack_a)->index != get_max_index(*stack_a) + 1) {
-                    rrr(stack_a, stack_b);
-                } else {
-                    rrb(stack_b);
-                }
-            }
+            while ((*stack_b)->index != max_index) rrb(stack_b);
         }
         pa(stack_a, stack_b);
     }
 }
 
-void chunk_sort(t_list **stack_a, t_list **stack_b) {
+void chunk_sort(t_list **stack_a, t_list **stack_b, int chunk_count) {
     int total_size = ft_lstsize(*stack_a);
-    int chunk_count = 5; // Dividimos en 5 chunks para 100 elementos
     int chunk_size = (total_size + chunk_count - 1) / chunk_count;
-    int i = 0;
 
-    while (i < chunk_count) {
+    for (int i = 0; i < chunk_count; i++) {
         int chunk_start = i * chunk_size;
-        int next_chunk_end = (i + 1) * chunk_size - 1;
-        int chunk_end = (next_chunk_end < total_size) ? next_chunk_end : total_size - 1;
+        int chunk_end = (i + 1) * chunk_size - 1;
+        if (chunk_end >= total_size) chunk_end = total_size - 1;
 
-        push_to_b_in_chunks(stack_a, stack_b, chunk_start, chunk_end);
-        i++;
+        int moved = 0; // Control para verificar si se movió un elemento
+        t_list *temp = *stack_a;
+        while (temp && moved < chunk_size) {
+            if (temp->index >= chunk_start && temp->index <= chunk_end) {
+                pb(stack_a, stack_b);
+                moved++;
+                temp = *stack_a;
+            } else {
+                ra(stack_a);
+                temp = *stack_a;
+            }
+        }
     }
-
-    insert_back_to_a(stack_a, stack_b);
 }
