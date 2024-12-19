@@ -6,7 +6,7 @@
 /*   By: allera-m <allera-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 19:45:09 by allera-m          #+#    #+#             */
-/*   Updated: 2024/12/19 12:27:55 by allera-m         ###   ########.fr       */
+/*   Updated: 2024/12/19 15:17:54 by allera-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,14 @@ void				free_stack(t_list **stack);
 // Algorithm utils
 // void	radix_sort(t_list **stack_a, t_list **stack_b);
 int					find_min_index(t_list *stack);
-void				chunk_sort(t_list **stack_a, t_list **stack_b, int chunk_count);
-void 				insert_back_to_a(t_list **stack_a, t_list **stack_b);
+void				chunk_sort(t_list **stack_a, t_list **stack_b,
+						int chunk_count);
+void				insert_back_to_a(t_list **stack_a, t_list **stack_b);
 void				simple_sort(t_list **stack_a, t_list **stack_b);
 void				index_stack(t_list **stack);
 void				sort_5(t_list **stack_a, t_list **stack_b);
-void				sort_3_helper(t_list **stack_a, t_list *head,
-						int min, int next_min);
+void				sort_3_helper(t_list **stack_a, t_list *head, int min,
+						int next_min);
 
 // Instruction functions
 int					swap(t_list **stack);
@@ -71,6 +72,5 @@ int					ss(t_list **stack_a, t_list **stack_b);
 int					rr(t_list **stack_a, t_list **stack_b);
 int					rrb(t_list **stack_b);
 int					rrr(t_list **stack_a, t_list **stack_b);
-
 
 #endif

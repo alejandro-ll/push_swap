@@ -6,7 +6,7 @@
 /*   By: allera-m <allera-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 18:27:35 by allera-m          #+#    #+#             */
-/*   Updated: 2024/12/19 13:50:21 by allera-m         ###   ########.fr       */
+/*   Updated: 2024/12/19 15:17:15 by allera-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ static void	sort_stack(t_list **stack_a, t_list **stack_b)
 	else
 	{
 		chunk_sort(stack_a, stack_b, 6);
-		insert_back_to_a(stack_a, stack_b); }
+		insert_back_to_a(stack_a, stack_b);
+	}
 }
 
 static int	process_stacks(int argc, char **argv)
