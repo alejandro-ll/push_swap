@@ -6,7 +6,7 @@
 /*   By: allera-m <allera-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 17:27:45 by allera-m          #+#    #+#             */
-/*   Updated: 2024/12/19 15:08:29 by allera-m         ###   ########.fr       */
+/*   Updated: 2024/12/19 19:35:02 by allera-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,15 @@ void	ft_free(char **arr, int size)
 
 	if (!arr)
 		return ;
-	for (i = 0; i < size; i++)
+	i = 0;
+	while (i < size)
 	{
 		if (arr[i])
 		{
 			free(arr[i]);
 			arr[i] = NULL;
 		}
+		i++;
 	}
 	free(arr);
 	arr = NULL;

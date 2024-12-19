@@ -6,7 +6,7 @@
 /*   By: allera-m <allera-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 19:45:09 by allera-m          #+#    #+#             */
-/*   Updated: 2024/12/19 15:17:54 by allera-m         ###   ########.fr       */
+/*   Updated: 2024/12/19 19:35:50 by allera-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,13 @@ typedef struct s_list
 	int				index;
 	struct s_list	*next;
 }					t_list;
+
+typedef struct s_chunk
+{
+	int				start;
+	int				end;
+	int				size;
+}					t_chunk;
 
 // Util functions
 t_list				*ft_lstnew(int value);

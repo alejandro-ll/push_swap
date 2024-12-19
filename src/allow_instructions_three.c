@@ -6,7 +6,7 @@
 /*   By: allera-m <allera-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 08:41:02 by user              #+#    #+#             */
-/*   Updated: 2024/12/19 15:18:06 by allera-m         ###   ########.fr       */
+/*   Updated: 2024/12/19 19:34:12 by allera-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,25 +43,5 @@ int	rrb(t_list **stack_b)
 	if (reverserotate(stack_b) == -1)
 		return (-1);
 	ft_putendl_fd("rrb", 1);
-	return (0);
-}
-
-int	rrr(t_list **stack_a, t_list **stack_b)
-{
-	if ((ft_lstsize(*stack_a) < 2) || (ft_lstsize(*stack_b) < 2))
-		return (-1);
-	reverserotate(stack_a);
-	reverserotate(stack_b);
-	ft_putendl_fd("rrr", 1);
-	return (0);
-}
-
-int	rr(t_list **stack_a, t_list **stack_b)
-{
-	if ((ft_lstsize(*stack_a) < 2) || (ft_lstsize(*stack_b) < 2))
-		return (-1);
-	rotate(stack_a);
-	rotate(stack_b);
-	ft_putendl_fd("rr", 1);
 	return (0);
 }
