@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: allera-m <allera-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 18:27:35 by allera-m          #+#    #+#             */
-/*   Updated: 2024/12/12 11:51:01 by user             ###   ########.fr       */
+/*   Updated: 2024/12/19 13:50:21 by allera-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	init_stack(t_list **stack, int argc, char **argv)
 		i++;
 	}
 	if (argc == 2)
-		free(args);
+		ft_free(args, i);
 	index_stack(stack);
 }
 

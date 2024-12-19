@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: allera-m <allera-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 19:45:09 by allera-m          #+#    #+#             */
-/*   Updated: 2024/12/12 11:39:38 by user             ###   ########.fr       */
+/*   Updated: 2024/12/19 12:27:55 by allera-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ int					is_sorted(t_list *stack);
 int					get_distance(t_list **stack, int index);
 void				make_top(t_list **stack, int distance);
 void				free_stack(t_list **stack);
-void				ft_free(char **str);
 
 // Algorithm utils
 // void	radix_sort(t_list **stack_a, t_list **stack_b);

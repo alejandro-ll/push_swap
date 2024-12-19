@@ -6,7 +6,7 @@
 /*   By: allera-m <allera-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 17:07:50 by allera-m          #+#    #+#             */
-/*   Updated: 2024/12/10 19:42:24 by allera-m         ###   ########.fr       */
+/*   Updated: 2024/12/19 15:11:05 by allera-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,13 +71,13 @@ int	check_for_duplicates(int argc, char **argv)
 		if (has_duplicate(args, new_argc, num1, i))
 		{
 			if (argc == 2)
-				free(args);
+				ft_free(args, new_argc);
 			return (1);
 		}
 		i++;
 	}
 	if (argc == 2)
-		free(args);
+		ft_free(args, new_argc);
 	return (0);
 }
 
@@ -94,12 +94,12 @@ int	check_for_non_numeric(int argc, char **argv)
 		if (is_non_numeric(args[i]) || !is_number_within_limits(args[i]))
 		{
 			if (argc == 2)
-				free(args);
+				ft_free(args, new_argc);
 			return (1);
 		}
 		i++;
 	}
 	if (argc == 2)
-		free(args);
+		ft_free(args, new_argc);
 	return (0);
 }
